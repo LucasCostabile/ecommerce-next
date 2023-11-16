@@ -1,10 +1,13 @@
 //import Image from 'next/image'
-import NavBar from "./components/navbar";
+import { Button } from "./components/Button";
+import { NavBar } from "./components/navbar";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <NavBar />
-    </main>
+      <Button title='Buscar' />
+      <Button title='Enviar' />
+    </> 
   )
 }
