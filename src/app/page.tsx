@@ -1,13 +1,13 @@
 //import Image from 'next/image'
-import { Button } from "./components/Button";
+import { ItemListContainer } from "./components/ItemsContainer/ItemListContainer";
 import { NavBar } from "./components/navbar";
+
 
 export default function Home() {
   return (
     <>
       <NavBar />
-      <Button title='Buscar' />
-      <Button title='Enviar' />
+      <ItemListContainer greeting="Bem-vindo ao nosso catálogo"/>
     </> 
   )
 }
