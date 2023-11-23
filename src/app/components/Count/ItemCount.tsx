@@ -16,7 +16,7 @@ const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
   };
 
   const handleDecrement = () => {
-    if (count > 1) {
+    if (count > 0) {
       setCount(count - 1);
     }
   };
@@ -28,7 +28,8 @@ const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
   };
 
   console.log("Quantidade selecionada:", count); // Adiciona log da quantidade selecionada
-
+  console.log("Quantidade no estoque:", stock);
+  console.log("Condição de exibição:", stock === 0);
   return (
     <div>
       <div className=" flex justify-around items-center w-32 h-12  border border-gray-300 rounded-md font-normal">
