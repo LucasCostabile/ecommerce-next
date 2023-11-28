@@ -30,18 +30,18 @@ const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
   console.log("Quantidade selecionada:", count); // Adiciona log da quantidade selecionada
   console.log("Quantidade no estoque:", stock);
   console.log("Condição de exibição:", stock === 0);
+  
   return (
     <div>
       <div className=" flex justify-around items-center w-32 h-12  border border-gray-300 rounded-md font-normal">
         <button className=" w-6 h-6 bg-slate-400 rounded-full " onClick={handleDecrement}>-</button>
-        <span>{count}</span>
+        <p>{count}</p>
         <button className=" w-6 h-6 bg-slate-400 rounded-full " onClick={handleIncrement}>+</button>
       </div>
-      <button className=" w-32 h-12 border border-gray-300 rounded-md text-center  font-semibold tracking-wide" onClick={handleAddToCart}>Adicionar ao carrinho</button>
+      <button className=" flex w-32 h-12 border border-gray-300 rounded-md font-semibold tracking-wide" onClick={handleAddToCart}>Adicionar ao carrinho</button>
       {stock === 0 && <p>Desculpe, sem estoque disponível.</p>}
     </div>
   );
 };
 
 export { ItemCount };
-
