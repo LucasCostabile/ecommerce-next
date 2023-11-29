@@ -3,7 +3,6 @@ interface Props {
     nameScreen: string;
 }
 
-
 const Loading: React.FC<Props> = ({ loading, nameScreen }) => {
     return (
         <>

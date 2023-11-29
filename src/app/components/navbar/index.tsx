@@ -1,46 +1,21 @@
-<<<<<<< HEAD
 import { Cart } from "./CartWidget";
 
 const NavBar = () => {
     return(
-        <div className="bg-sky-500 p-5 shadow-lg flex justify-between">
-            <h1 className="text-center">Ecommerce</h1>
+        <div className="bg-gray-700 p-4 shadow-2xl flex justify-between">
+            <h1 className="text-center text-slate-200 font-bold ">ClickByte</h1>
 
             <ul className="text-center flex gap-5">
-                <li className="ml-6 bg-blue-700 px-4 py-2 text-white rounded-lg hover:opacity-90">
+                <button className="ml-6 bg-slate-500 px-3 py-1 text-white rounded-lg hover:opacity-90">
                     Inicio
-                </li>
-                <li className="ml-6 bg-blue-700 px-4 py-2 text-white rounded-lg hover:opacity-90">
+                </button>
+                <button className="ml-6 bg-slate-500 px-3 py-1 text-white rounded-lg hover:opacity-90">
                     Login
-                </li>
+                </button>
                 <Cart />
             </ul>
         </div>
         
     )
 }
-
-=======
-import { Cart } from "./CartWidget";
-
-const NavBar = () => {
-    return(
-        <div className="bg-sky-500 p-5 shadow-lg flex justify-between">
-            <h1 className="text-center">Ecommerce</h1>
-
-            <ul className="text-center flex gap-5">
-                <li className="ml-6 bg-blue-700 px-4 py-2 text-white rounded-lg hover:opacity-90">
-                    Inicio
-                </li>
-                <li className="ml-6 bg-blue-700 px-4 py-2 text-white rounded-lg hover:opacity-90">
-                    Login
-                </li>
-                <Cart />
-            </ul>
-        </div>
-        
-    )
-}
-
->>>>>>> ea042e5866861037613f94d7e7fe0d11ff0cc724
 export  { NavBar };

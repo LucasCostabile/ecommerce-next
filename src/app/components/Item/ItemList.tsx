@@ -33,14 +33,14 @@ const ItemList = () => {
           }, 
           {
             id: 3,
-            description: 'descrição produto',
+            description: 'Placa de Vídeo Gigabyte NVIDIA GeForce RTX 4060',
             title: 'nome produto',
             price: 10,
             image: Item3
           },
           {
             id: 4,
-            description: 'descrição produto',
+            description: 'Placa de Vídeo Gigabyte NVIDIA GeForce RTX 4060',
             title: 'nome produto',
             price: 10,
             image: Item3
@@ -62,7 +62,7 @@ const ItemList = () => {
         // reject({
         //   message: 'Ops, tivemos um erro!'
         // });
-      }, 3000)
+      }, 1000)
 
     })
   }
@@ -83,17 +83,18 @@ const ItemList = () => {
   }, [])
 
   return (
-    <div className='flex flex-wrap justify-around items-center'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-10 xl:gap-6'>
       <Loading loading={isLoading} nameScreen='home' />
       {Listrepo.map((item) => (
-        <Item
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          description={item.description}
-          price={item.price}
-          image={item.image}
-        />
+        <div key={item.id} className=''>
+          <Item
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            price={item.price}
+            image={item.image}
+          />
+        </div>
       ))}
     </div>
   );
