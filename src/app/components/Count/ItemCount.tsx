@@ -43,5 +43,5 @@ const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
     </div>
   );
 };
-
+ 
 export { ItemCount };

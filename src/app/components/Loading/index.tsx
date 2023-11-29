@@ -15,4 +15,4 @@ const Loading: React.FC<Props> = ({ loading, nameScreen }) => {
     )
 }
 
-export { Loading }
+export { Loading } 

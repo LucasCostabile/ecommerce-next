@@ -48,7 +48,7 @@ const ContainerDetail = () => {
 
   return (
     <section>
-      <Loading loading={isLoading} nameScreen='home' />
+      <Loading loading={isLoading} nameScreen='home' /> 
         <ItemDetail
           id={detailRepo?.id}
           title={detailRepo?.title}

@@ -86,7 +86,7 @@ const ItemList = () => {
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-10 xl:gap-6'>
       <Loading loading={isLoading} nameScreen='home' />
       {Listrepo.map((item) => (
-        <div key={item.id} className=''>
+        <div key={item.id}>
           <Item
             id={item.id}
             title={item.title}

@@ -23,7 +23,7 @@ const Item: React.FC<ItemProps> = ({ id, title, description, price, image }) => 
         </div>
         <div className='flex flex-col justify-center items-center font-bold'>
           <h3 className='my-1'>{description}</h3>
-          <p className=' my-1'>Preço: {price}</p>
+          <p className='my-1'>Preço: {price}</p>
           <ItemCount
           stock={10} // Defina o estoque disponível para o item
           initial={0} // Defina a quantidade inicial desejada
