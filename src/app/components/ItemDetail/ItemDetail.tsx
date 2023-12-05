@@ -3,6 +3,7 @@ import { Idetail } from "../interfaces/detail.interface";
 import Image from "next/image";
 
 const ItemDetail = ({id, title, description, price, image,}: Idetail) => {
+  
   const handleAddToCart = (quantity: number) => {
     console.log(`Adicionar ao carrinho: ${quantity}`);
   };

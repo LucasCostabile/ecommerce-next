@@ -1,20 +1,24 @@
-// ItemList.tsx
+'use client'
 import React, { useState, useEffect } from 'react';
-import { Irepo } from '../interfaces/respo.interface';
-import { Item } from './Item';
-import { Loading } from '../Loading';
+import { Loading } from '../../components/Loading';
+import { ItemDetail } from '../../components/ItemDetail/ItemDetail';
 import Item1 from '@/app/assets/processador.png';
 import Item2 from '@/app/assets/upgrade1260_139552.png'
 import Item3 from '@/app/assets/placa-de-video.png'
-import Link from 'next/link';
+import { Idetail } from '../../components/interfaces/detail.interface';
 
+interface Props{
+  params: {
+    id:number;
+  };
+}
 
-const ItemList = () => {
+const ContainerDetail = ({params}: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [Listrepo, setListRepo] = useState<Irepo[]>([]);
+  const [detailRepo, setDetailRepo] = useState<Idetail | null>(null);
 
 
-  const getListRepo = (): Promise<Irepo[]> => {
+  const getItems = (): Promise<Idetail[]> => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve([
@@ -28,21 +32,20 @@ const ItemList = () => {
           {
             id: 2,
             description: 'Kit Upgrade Ryzen 7 5700X + Placa Mãe B550',
-            title: 'nome produto',
+            title: 'Kit Upgrade',
             price: 9,
             image: Item2
           }, 
           {
             id: 3,
             description: 'Placa de Vídeo Gigabyte NVIDIA GeForce RTX 4060',
-            title: 'nome produto',
+            title: 'Placa de Vídeo',
             price: 10,
             image: Item3
-          },
-          {
+          },{
             id: 4,
             description: 'Placa de Vídeo Gigabyte NVIDIA GeForce RTX 4060',
-            title: 'nome produto',
+            title: 'Placa de Vídeo',
             price: 10,
             image: Item3
           },
@@ -55,52 +58,45 @@ const ItemList = () => {
           },{
             id: 6,
             description: 'Kit Upgrade Ryzen 7 5700X + Placa Mãe B550',
-            title: 'nome produto',
+            title: 'Kit Upgrade',
             price: 9,
             image: Item2
           }
         ])
-        // reject({
-        //   message: 'Ops, tivemos um erro!'
-        // });
-      }, 1000)
-
+      },1000)
     })
   }
 
   useEffect(() => {
-    setIsLoading(true);
-    const onMount = async () => {
+    const getProductById = async () => {
+      setIsLoading(true);
       try {
-        const resp = await getListRepo();
-        setListRepo(resp);
+        const resp = await getItems();
+        const productId = resp.find((produto) => produto.id === Number(params.id));
+        productId ? setDetailRepo(productId) : console.log('Nenhum produto encontrado com o ID fornecido.'); 
       } catch (error) {
-        console.log('Deu ruim', error);
+        console.log('Erro', error);
       } finally {
         setIsLoading(false);
       }
-    }
-    onMount();
-  }, [])
+    };
+  
+    getProductById();
+  }, [params.id]);
+  
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-10 xl:gap-6'>
-      <Loading loading={isLoading} nameScreen='home' />
-      {Listrepo.map((item) => (
-         <div key={item.id}>
-          <Link href={`/ContainerDetail/${item.id}`}>
-          <Item
-            id={item.id}
-            title={item.title}
-            description={item.description}
-            price={item.price}
-            image={item.image}
-          />
-          </Link>
-        </div>
-      ))}
-    </div>
+    <section>
+      <Loading loading={isLoading} nameScreen='home' /> 
+        <ItemDetail
+          id={detailRepo?.id}
+          title={detailRepo?.title}
+          description={detailRepo?.description}
+          price={detailRepo?.price}
+          image={detailRepo?.image}
+        />
+    </section>
   );
 };
 
-export { ItemList }
+export default ContainerDetail;
