@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
 
 interface ItemCountProps {
@@ -9,6 +8,7 @@ interface ItemCountProps {
 
 const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
   const [count, setCount] = useState(initial);
+  const [totalStock, setTotalStock] = useState(stock)
 
   const handleIncrement = () => {
     if (count < stock) {
@@ -25,22 +25,29 @@ const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
   const handleAddToCart = () => {
     if (stock > 0 && count > 0) {
       onAdd(count);
+      setTotalStock((prevStock => prevStock - count))
     }
   };
 
-  //console.log("Quantidade selecionada:", count); // Adiciona log da quantidade selecionada
-  //console.log("Quantidade no estoque:", stock);
+  console.log("Quantidade selecionada:", count); // Adiciona log da quantidade selecionada
+  console.log("Quantidade no estoque:", totalStock);
   //console.log("Condição de exibição:", stock === 0);
   
   return (
     <div>
+      <h2>quantidade no estoque: {totalStock}</h2>
       <div className=" flex justify-around items-center w-32 h-12  border border-gray-300 rounded-md font-bold">
         <button className=" w-6 h-6 bg-slate-400 rounded-full " onClick={handleDecrement}>-</button>
         <p>{count}</p>
-        <button className=" w-6 h-6 bg-slate-400 rounded-full " onClick={handleIncrement}>+</button>
+        <button className=" w-6 h-6 bg-slate-400 rounded-full " onClick={handleIncrement} disabled={count >= totalStock ?  true  :  false } >+</button>
       </div>
-      <button className=" flex w-32 h-12 border border-gray-300 rounded-md font-semibold tracking-wide" onClick={handleAddToCart}> <Link href="/ContainerDetail/">Adicionar ao carrinho</Link> </button>
-      {stock === 0 && <p>Desculpe, sem estoque disponível.</p>}
+      <button className=" flex w-32 h-12 border border-gray-300 rounded-md font-semibold tracking-wide" 
+      onClick={handleAddToCart}
+      disabled={count > totalStock ?  true  :  false }
+      >
+        Adicionar ao carrinho
+      </button>
+      {totalStock === 0 &&  <p>Desculpe, sem estoque disponível.</p>}
     </div>
   );
 };
