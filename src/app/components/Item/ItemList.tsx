@@ -7,6 +7,7 @@ import Item1 from '@/app/assets/processador.png';
 import Item2 from '@/app/assets/upgrade1260_139552.png'
 import Item3 from '@/app/assets/placa-de-video.png'
 import Link from 'next/link';
+import { Button } from '../Button';
 
 
 const ItemList = () => {
@@ -88,7 +89,7 @@ const ItemList = () => {
       <Loading loading={isLoading} nameScreen='home' />
       {Listrepo.map((item) => (
          <div key={item.id}>
-          <Link href={`/ContainerDetail/${item.id}`}>
+          
           <Item
             id={item.id}
             title={item.title}
@@ -96,7 +97,6 @@ const ItemList = () => {
             price={item.price}
             image={item.image}
           />
-          </Link>
         </div>
       ))}
     </div>
