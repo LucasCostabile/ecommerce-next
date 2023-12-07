@@ -7,9 +7,11 @@ const NavBar = () => {
             <h1 className="text-center text-slate-200 font-bold ">ClickByte</h1>
 
             <ul className="text-center flex gap-5">
-                <Link href="/"><button className="ml-6 bg-slate-500 px-3 py-1 text-white rounded-lg hover:opacity-90">
+                <Link href="/">
+                    <button className="ml-6 bg-slate-500 px-3 py-1 text-white rounded-lg hover:opacity-90">
                     Inicio
-                </button></Link>
+                    </button>
+                </Link>
                 <button className="ml-6 bg-slate-500 px-3 py-1 text-white rounded-lg hover:opacity-90">
                     Login
                 </button>
