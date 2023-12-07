@@ -1,7 +1,8 @@
 // Item.tsx
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
-import { ItemCount } from '../Count/ItemCount';
+import { Button } from '../Button';
+import Link from 'next/link';
 
 interface ItemProps {
   id: number;
@@ -24,11 +25,9 @@ const Item: React.FC<ItemProps> = ({ id, title, description, price, image }) => 
         <div className='flex flex-col justify-center items-center font-bold'>
           <h3 className='my-1'>{description}</h3>
           <p className='my-1'>Preço: {price}</p>
-          <ItemCount
-          stock={10} // Defina o estoque disponível para o item
-          initial={0} // Defina a quantidade inicial desejada
-          onAdd={(quantity: number) => handleAddToCart(quantity)}
-          />
+          <Link href={`/ContainerDetail/${id}`}>
+            <Button title='Ver detalhes do produto'/>
+          </Link>
       </div>
     </div>
   );
