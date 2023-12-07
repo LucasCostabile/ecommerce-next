@@ -7,9 +7,10 @@ interface Props {
 const Button = ({title}: Props) => {
 
     return(
-        <button className="ml-6 bg-blue-700 px-4 py-2 text-white rounded-lg hover:opacity-90 ">{title}</button>
+        <button className=" flex justify-center items-center  w-96 h-12 border border-gray-300 rounded-md font-semibold tracking-wide">
+        {title}
+        </button>
     )
-
-}
+};
  
 export {Button}
