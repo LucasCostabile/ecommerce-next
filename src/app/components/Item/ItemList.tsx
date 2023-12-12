@@ -6,13 +6,13 @@ import { Loading } from '../Loading';
 import Item1 from '@/app/assets/processador.png';
 import Item2 from '@/app/assets/upgrade1260_139552.png'
 import Item3 from '@/app/assets/placa-de-video.png'
-import Link from 'next/link';
-import { Button } from '../Button';
+import { useCartContext } from '@/app/context/CartContext';
 
 
 const ItemList = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [Listrepo, setListRepo] = useState<Irepo[]>([]);
+  //const [Listrepo, setListRepo] = useState<Irepo[]>([]);
+  const {detailRepo, setDetailRepo} = useCartContext()
 
 
   const getListRepo = (): Promise<Irepo[]> => {
@@ -69,12 +69,14 @@ const ItemList = () => {
     })
   }
 
+
   useEffect(() => {
     setIsLoading(true);
     const onMount = async () => {
       try {
         const resp = await getListRepo();
-        setListRepo(resp);
+        setDetailRepo(resp);
+        console.log(resp)
       } catch (error) {
         console.log('Deu ruim', error);
       } finally {
@@ -82,12 +84,12 @@ const ItemList = () => {
       }
     }
     onMount();
-  }, [])
+  }, [setDetailRepo])
 
   return (
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-10 xl:gap-6'>
       <Loading loading={isLoading} nameScreen='home' />
-      {Listrepo.map((item) => (
+      {detailRepo.map((item) => (
          <div key={item.id}>
           
           <Item

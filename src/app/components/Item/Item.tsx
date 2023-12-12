@@ -13,10 +13,7 @@ interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = ({ id, title, description, price, image }) => {
-  const handleAddToCart = (quantity: number) => {
-    console.log(`Adicionar ao carrinho: ${quantity}`);
-  };
-
+ 
   return (
     <div className='flex flex-col shadow-lg h-96 items-center justify-center p-5 g-10'>
         <div className='relative max-h-72 flex-1 '>
