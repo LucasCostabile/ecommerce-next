@@ -1,13 +1,10 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import { Loading } from '../../components/Loading';
-import { ItemDetail } from '../../components/ItemDetail/ItemDetail';
-import Item1 from '@/app/assets/processador.png';
-import Item2 from '@/app/assets/upgrade1260_139552.png'
-import Item3 from '@/app/assets/placa-de-video.png'
-import { Idetail } from '../../components/interfaces/detail.interface';
-import { useCartContext } from '@/app/context/CartContext';
+import Loading from '../../components/Loading';
+import ItemDetail from '@/app/components/ItemDetail/ItemDetail';
+import { useCartStore } from '@/app/store/store';
 import { StaticImageData } from 'next/image';
+import { Idetail } from '@/app/components/interfaces/detail.interface';
 
 interface Props {
   params: {
@@ -15,52 +12,36 @@ interface Props {
   };
 }
 
-interface ItemListProps {
-  id: number;
-  title: string;
-  price: number;
-  image: StaticImageData;
-  description: string;
-}
+
 
 const ContainerDetail = ({ params }: Props) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [detail, setDetail] = useState<ItemListProps | null>(null);
-  const { detailRepo, setDetailRepo } = useCartContext()
+  const [detail, setDetail] = useState<Idetail | null>(null);
+  const cartStore = useCartStore(state => state.itemDetails); // Acessando itemDetails do useCartStore
 
 
-  const getItems = (): Promise<ItemListProps[]> => {
-    return new Promise((resolve, reject) => {
+  const getProductById = async () => {
+    setIsLoading(true);
+    try {
       setTimeout(() => {
-        resolve(detailRepo)
-        console.log(detailRepo)
-      }, 1000)
-    })
-  }
+        const productId = cartStore.find((produto) => produto.id === Number(params.id));
+        productId ? setDetail(productId) : console.log('Nenhum produto encontrado com o ID fornecido.');
+        setIsLoading(false);
+      }, 2000); // Tempo de atraso de 2 segundos
+    } catch (error) {
+      console.log('Erro', error);
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const getProductById = async () => {
-      setIsLoading(true);
-      try {
-        const resp = await getItems();
-        console.log(resp)
-        const productId = resp.find((produto) => produto.id === Number(params.id));
-        
-        productId ? setDetailRepo([productId]) : console.log('Nenhum produto encontrado com o ID fornecido.');
-      } catch (error) {
-        console.log('Erro', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
     getProductById();
-  }, [params.id]);
-
+  }, [params.id, cartStore]);
 
   return (
     <section>
-      <Loading loading={isLoading} nameScreen='home' />
+      <Loading loading={isLoading}  />
+      
       <ItemDetail
         id={detail?.id}
         title={detail?.title}
