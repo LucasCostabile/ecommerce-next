@@ -1,9 +1,8 @@
 interface Props {
     loading: boolean;
-    nameScreen: string;
 }
 
-const Loading: React.FC<Props> = ({ loading, nameScreen }) => {
+const Loading: React.FC<Props> = ({ loading }) => {
     return (
         <>
             {loading && (
@@ -15,4 +14,4 @@ const Loading: React.FC<Props> = ({ loading, nameScreen }) => {
     )
 }
 
-export { Loading } 
+export default Loading; 
