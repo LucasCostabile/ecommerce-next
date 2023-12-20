@@ -6,4 +6,7 @@ export interface Idetail{
   description?: string;
   price?: number;
   image?: StaticImageData;
+  quantity?: number | 1;
+  name?: string;
+  currency?: string;
 }
