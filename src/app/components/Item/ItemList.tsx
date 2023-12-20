@@ -1,13 +1,12 @@
 // ItemList.tsx
 import React, { useState, useEffect } from 'react';
-import { Irepo } from '../interfaces/respo.interface';
 import  Item  from './Item';
 import  Loading  from '../Loading';
-import Item1 from '@/app/assets/processador.png';
-import Item2 from '@/app/assets/upgrade1260_139552.png'
-import Item3 from '@/app/assets/placa-de-video.png'
 import { Idetail } from '../interfaces/detail.interface';
 import { useCartStore } from '@/app/store/store';
+import { APP_FIREBASE } from "@/app/config/firebase/firebase.config";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import ItemDetail from '../ItemDetail/ItemDetail';
 
 
 
@@ -18,7 +17,7 @@ const ItemList = () => {
   const cartStore = useCartStore();
 
 
-  const getListRepo = (): Promise<Idetail[]> => {
+/*   const getListRepo = (): Promise<Idetail[]> => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve([
@@ -87,6 +86,26 @@ const ItemList = () => {
         
       }
     };
+    onMount();
+  }, []); */
+
+  useEffect(() => {
+    const onMount = async () => {
+      try {
+        const db = getFirestore(APP_FIREBASE);
+        const prodRef = collection(db, "items");
+        const listaDb = await getDocs(prodRef).then((item) => {
+          const lista = item.docs.map((doc) => doc.data());
+          return lista;
+        });
+
+        console.log(listaDb);
+        cartStore.setItemDetails(listaDb);
+      } catch (err) {
+        console.log("Erro:", err);
+      }
+    };
+    console.log(ItemDetail);
     onMount();
   }, []);
 
