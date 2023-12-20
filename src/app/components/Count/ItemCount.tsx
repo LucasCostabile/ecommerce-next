@@ -9,6 +9,8 @@ interface ItemCountProps {
 const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
   const [count, setCount] = useState(initial);
   const [totalStock, setTotalStock] = useState(stock)
+  const [cart, setCart] = useState<number>(0);
+  
 
   const handleIncrement = () => {
     if (count < stock) {
@@ -29,6 +31,13 @@ const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
     }
   };
 
+  const updateCart = (quantity: number) => {
+    // Atualiza o estado do carrinho com a quantidade selecionada
+    setCart(cart + quantity);
+    // Atualiza o estoque disponível
+    setTotalStock(totalStock - quantity);
+  };
+
   //console.log("Quantidade selecionada:", count); // Adiciona log da quantidade selecionada
   //console.log("Quantidade no estoque:", totalStock);
   //console.log("Condição de exibição:", stock === 0);
@@ -47,9 +56,10 @@ const ItemCount: React.FC<ItemCountProps> = ({ initial, stock, onAdd }) => {
       >
         Adicionar ao carrinho
       </button>
+      <p>Total no carrinho: {cart}</p>
       {totalStock === 0 &&  <p>Desculpe, sem estoque disponível.</p>}
     </div>
   );
 };
  
-export { ItemCount };
+export default ItemCount ;
