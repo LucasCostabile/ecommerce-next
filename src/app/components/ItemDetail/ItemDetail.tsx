@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Button } from '../Button';
-import { ItemCount } from '../Count/ItemCount';
+import  Button  from '../Button';
+import  ItemCount  from '../Count/ItemCount';
 import { Idetail } from '../interfaces/detail.interface';
 import Image from 'next/image';
 
@@ -15,11 +15,6 @@ const ItemDetail = ({ id, title, description, price, image }: Idetail) => {
     setStock(stock - quantity);
   };
 
-  const handleBuyNow = () => {
-    // Lógica para finalizar a compra usando os itens no carrinho
-    console.log(`Compra finalizada com ${cart} itens!`);
-    // Aqui você pode adicionar lógica adicional para finalizar a compra
-  };
 
   return (
     <div className="flex justify-center items-center">
@@ -35,7 +30,7 @@ const ItemDetail = ({ id, title, description, price, image }: Idetail) => {
           initial={0} // Defina a quantidade inicial desejada
           onAdd={(quantity: number) => handleAddToCart(quantity)} />
         <div>
-          <Button title="Comprar" onClick={handleBuyNow}/>
+          <Button title="Comprar" /> 
         </div>
         <p>Total no carrinho: {cart}</p>
       </div>
@@ -43,4 +38,4 @@ const ItemDetail = ({ id, title, description, price, image }: Idetail) => {
   );
 };
 
-export { ItemDetail };
+export default ItemDetail ;
