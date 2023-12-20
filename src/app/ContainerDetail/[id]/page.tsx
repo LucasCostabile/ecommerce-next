@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import Loading from '../../components/Loading';
 import ItemDetail from '@/app/components/ItemDetail/ItemDetail';
 import { useCartStore } from '@/app/store/store';
-import { StaticImageData } from 'next/image';
 import { Idetail } from '@/app/components/interfaces/detail.interface';
 
 interface Props {
