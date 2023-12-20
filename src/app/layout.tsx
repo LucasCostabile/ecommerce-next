@@ -3,19 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { NavBar } from './components/navbar'
 import Hydrate from './components/Hydrate/Hydrate';
-import { initializeApp } from "firebase/app";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDCkypVDZfSBySUGoCtdDRr4xtMeNALVns",
-  authDomain: "ecommerce-next-6cf81.firebaseapp.com",
-  projectId: "ecommerce-next-6cf81",
-  storageBucket: "ecommerce-next-6cf81.appspot.com",
-  messagingSenderId: "510357438487",
-  appId: "1:510357438487:web:7705873082f46b1727dc52",
-  measurementId: "G-1LDHXB90PB"
-};
 
-initializeApp(firebaseConfig);
 
 const inter = Inter({ subsets: ['latin'] })
 
