@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
-import { ItemList } from '../Item/ItemList';
+import ItemList  from '../Item/ItemList';
+
 
 
 interface ItemListContainerProps {
@@ -14,10 +15,10 @@ const ItemListContainer: React.FC<ItemListContainerProps> = ({ greeting }) => {
     <section className='text-center'>
       <h2 className='m-5'>{greeting}</h2>
       <section>
-      <ItemList />
+        <ItemList />
       </section>
     </section>
   );
 };
 
-export { ItemListContainer } 
+export default ItemListContainer  
