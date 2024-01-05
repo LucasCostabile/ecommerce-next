@@ -5,7 +5,7 @@ import { Cart } from "./CartWidget";
 const NavBar = () => {
     
     return(
-        <div className="bg-gray-700 p-4  shadow-2xl flex justify-between">
+        <div className="bg-gray-700 p-4  shadow-2xl flex justify-between sticky top-0 z-10">
             <h1 className="text-center text-slate-200 font-bold ">ClickByte</h1>
                 <ul className="text-center flex gap-5 justify-around">
                     <Cart />
@@ -22,4 +22,4 @@ const NavBar = () => {
         
     )
 }
-export  { NavBar }; 
+export default  NavBar ; 
