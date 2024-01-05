@@ -11,6 +11,7 @@ type CartState = {
     setItemDetails: (items: Idetail[]) => void;
     isOpen: boolean;
     toggleCart: () => void;
+    clearCart: () => void; 
 };
 
 export const useCartStore = create<CartState>()(
@@ -55,6 +56,7 @@ export const useCartStore = create<CartState>()(
             }),
             setItemDetails: (items) => set({ itemDetails: items }),
         isOpen: false,
-                    toggleCart: () => set((state) => ({ isOpen: !state.isOpen }))
+        clearCart: () => set(() => ({cart:[]})),
+        toggleCart: () => set((state) => ({ isOpen: !state.isOpen }))
     }), { name: 'cart-storage' })
     );
