@@ -16,7 +16,7 @@ const Checkout = () => {
     const handlePayment = async () => {
         if (!isCartEmpty) {
             const itemsPurchased = useStore.cart.map((item) => `${item.title} - Quantidade: ${item.quantity}`).join('\n');
-            alert(`Itens Comprados:\n${itemsPurchased}`);
+            alert(`Itens Comprados:\n${itemsPurchased}  \n\nTotal da compra: ${totalPrice}`);
     
             for (const item of useStore.cart) {
                 try {
@@ -57,7 +57,7 @@ const Checkout = () => {
                         key={item.id} 
                         className="flex gap-4 py-4 border-solid border-2 border-gray-600 m-10">
                             
-                            <Image src={item.image!} alt={item.title!} width={130} height={130} className="object-cover w-24" />
+                            <Image src={item.image!} alt={item.title!} width={200} height={200} className="object-cover w-24" />
                             <div>
                                 <h2 className="w-42 truncate text-orange-600 text-sm font-bold">{item.title}</h2>
                                 <h2 className="text-black text-sm font-bold">Quantidade: {item.quantity}</h2>
