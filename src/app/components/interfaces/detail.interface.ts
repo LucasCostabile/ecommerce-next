@@ -9,4 +9,5 @@ export interface Idetail{
   quantity?: number | 1;
   name?: string;
   currency?: string;
-}
+  stock?: number;
+};
