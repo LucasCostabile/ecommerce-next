@@ -1,41 +1,50 @@
-import { useState } from 'react';
-import  Button  from '../Button';
-import  ItemCount  from '../Count/ItemCount';
+import { useState } from 'react'; 
 import { Idetail } from '../interfaces/detail.interface';
 import Image from 'next/image';
+import { useCartStore } from '@/app/store/store';
 
 const ItemDetail = ({ id, title, description, price, image }: Idetail) => {
-  const [cart, setCart] = useState<number>(0);
-  const [stock, setStock] = useState<number>(10); // Defina o estoque inicial
+  const useStore = useCartStore();
+  const [addedToCart, setAddedToCart] = useState<number>(0); // Estado local para controlar a quantidade adicionada ao carrinho
 
-  const handleAddToCart = (quantity: number) => {
-    // Atualiza o estado do carrinho com a quantidade selecionada
-    setCart(cart + quantity);
-    // Atualiza o estoque disponível
-    setStock(stock - quantity);
+  const handleAddToCart = (item: Idetail) => {
+    useStore.addProduct(item);
+    setAddedToCart(addedToCart + 1); // Atualiza a quantidade adicionada localmente ao clicar em "Adicionar ao Carrinho"
   };
+
+  const quantityInCart = useStore.cart.reduce((acc, item) => {
+    if (item.id === id && item.quantity !== undefined) {
+      return acc + item.quantity; // Soma a quantidade do item no carrinho, se definida
+    }
+    return acc;
+  }, 0);
 
 
   return (
-    <div className="flex justify-center items-center">
-      <div className="items-center justify-center m-11 p-2 ">
-        <Image src={image!} alt={title!} height={400} width={400}></Image>
+    <section className="flex justify-center items-center">
+      <div 
+      className="items-center justify-center m-11 p-2 ">
+        <Image src={image!} alt={title!} height={500} width={500}></Image>
       </div>
-      <div className="flex flex-col items-center justify-center p-10 gap-6">
-        <h1 className="text-center m-10 text-lg font-semibold">Detalhes do produto:</h1>
-        <h2 className="text-center">{description}</h2>
-        <p className="text-lg">R${price}</p>
-        <ItemCount
-          stock={stock} // Passa o estoque disponível para o ItemCount
-          initial={0} // Defina a quantidade inicial desejada
-          onAdd={(quantity: number) => handleAddToCart(quantity)} />
+      <div className="flex flex-col items-center justify-center p-10 gap-6 border-solid border-2 rounded-md border-gray-600 bg-gray-700">
+        <h1 className=" text-orange-600 text-center m-10 text-lg font-semibold">Detalhes do produto:</h1>
+        <h2 className="text-center text-black font-bold">{description}</h2>
+        <p className="text-lg text-green-400 font-bold">R${price}</p>
+        
+        {/* Exibe a quantidade no carrinho */}
+        <p className='text-black font-bold'>Adicionado ao carrinho: {quantityInCart}</p>
+        {/* Botões para adicionar/remover do carrinho */}
         <div>
-          <Button title="Comprar" /> 
+          <button
+            className="text-white py-1 px-2 border bg-orange-600 rounded-md mt-2 text-sm mr-1"
+            onClick={() => handleAddToCart({ id, title, description, price, image })}
+          >
+            Adicionar ao Carrinho
+          </button>
         </div>
-        <p>Total no carrinho: {cart}</p>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default ItemDetail ;
+export default ItemDetail;
