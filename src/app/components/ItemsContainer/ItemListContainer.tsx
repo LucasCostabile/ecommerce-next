@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import ItemList  from '../Item/ItemList';
+import Banner from '../Banner/Banner';
 
 
 
@@ -15,6 +16,7 @@ const ItemListContainer: React.FC<ItemListContainerProps> = ({ greeting }) => {
     <section className='text-center'>
       <h2 className='m-5'>{greeting}</h2>
       <section>
+        <Banner />
         <ItemList />
       </section>
     </section>
