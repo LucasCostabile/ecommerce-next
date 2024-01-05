@@ -10,7 +10,7 @@ export default function Product({ product }: { product: Idetail}){
         <div>
             <button 
             onClick={() => addProduct(product)}
-            className=" flex justify-center items-center w-40 h-12 border border-gray-300 rounded-md font-semibold tracking-wide">
+            className=" flex justify-center items-center w-40 h-12 border border-gray-300 rounded-md font-semibold tracking-wide bg-orange-600 text-white">
             adicionar ao carrinho
             </button>
         </div>
