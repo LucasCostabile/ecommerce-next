@@ -47,6 +47,7 @@ const ContainerDetail = ({ params }: Props) => {
         description={detail?.description}
         price={detail?.price}
         image={detail?.image}
+        stock={detail?.stock}
       />
     </section>
   );
