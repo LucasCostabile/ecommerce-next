@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { NavBar } from './components/navbar'
+import  NavBar  from './components/navbar'
 import Hydrate from './components/Hydrate/Hydrate';
+import Footer from './components/Footer/Footer';
 
 
 
@@ -25,8 +26,9 @@ export default function RootLayout({
          <Hydrate>
         
           <NavBar />
+          
           {children}
-        
+          <Footer />
         </Hydrate>
       
       </body>
