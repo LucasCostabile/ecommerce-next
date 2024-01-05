@@ -12,6 +12,11 @@ const ItemDetail = ({ id, title, description, price, image }: Idetail) => {
     setAddedToCart(addedToCart + 1); // Atualiza a quantidade adicionada localmente ao clicar em "Adicionar ao Carrinho"
   };
 
+  const handleDecrement = (item: Idetail) => {
+    useStore.removeCart(item);
+    setAddedToCart(addedToCart - 1); // Atualiza a quantidade adicionada localmente ao clicar em "Adicionar ao Carrinho"
+  };
+
   const quantityInCart = useStore.cart.reduce((acc, item) => {
     if (item.id === id && item.quantity !== undefined) {
       return acc + item.quantity; // Soma a quantidade do item no carrinho, se definida
@@ -39,7 +44,13 @@ const ItemDetail = ({ id, title, description, price, image }: Idetail) => {
             className="text-white py-1 px-2 border bg-orange-600 rounded-md mt-2 text-sm mr-1"
             onClick={() => handleAddToCart({ id, title, description, price, image })}
           >
-            Adicionar ao Carrinho
+            Adicionar
+          </button>
+          <button
+            className="text-white py-1 px-2 border bg-orange-600 rounded-md mt-2 text-sm mr-1"
+            onClick={() => handleDecrement({ id, title, description, price, image })}
+          >
+            Remover
           </button>
         </div>
       </div>
