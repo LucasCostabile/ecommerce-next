@@ -39,7 +39,7 @@ const ItemDetail = ({ id, title, description, price, image, stock }: Idetail) =>
         <h1 className=" text-orange-600 text-center m-10 text-lg font-semibold">Detalhes do produto:</h1>
         <h2 className="text-center text-orange-400 font-bold">{description}</h2>
         <p className="text-lg text-green-400 font-bold">R${price}</p>
-        <p className=" text-white font-bold">quantidade disponível em estoque: {currentStock}</p>
+        <p className=" text-white font-bold">Quantidade disponível em estoque: {currentStock}</p>
         
         {/* Exibe a quantidade no carrinho */}
         <p className='text-white font-bold'>Adicionado ao carrinho: {quantityInCart}</p>
