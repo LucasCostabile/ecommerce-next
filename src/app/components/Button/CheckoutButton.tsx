@@ -18,8 +18,8 @@ const CheckoutButton = ({ totalPrice }: CheckoutProps) => {
             <button  
             
             onClick={() => useStore.toggleCart()} 
-            className="w-full rounded-md bg-orange-600 text-white py-2 mt-2 ">
-            <Link href={`/Checkout`}>finalizar compra</Link>
+            className="w-full rounded-md bg-orange-600 font-bold text-white py-2 mt-2 ">
+            <Link href={`/Checkout`}>Finalizar compra</Link>
             </button>
         </div>
     )
