@@ -14,7 +14,7 @@ const ItemListContainer: React.FC<ItemListContainerProps> = ({ greeting }) => {
 
   return (
     <section className='text-center'>
-      <h2 className='m-5'>{greeting}</h2>
+      <h2 className='m-5 text-orange-600 text-xl font-bold'>{greeting}</h2>
       <section>
         <Banner />
         <ItemList />
