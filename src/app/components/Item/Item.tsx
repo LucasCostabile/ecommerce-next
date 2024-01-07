@@ -26,7 +26,7 @@ const Item: React.FC<{ product: Idetail }> = ({ product }) => {
         <div className='flex flex-col justify-center items-center font-bold'>
           <h3 className='my-1 text-orange-800'>{title}</h3>
           <p className='my-1 text-green-500 font-bold'>R$ {price}</p>
-          <p>quantidade em estoque: {stock}</p>
+          <p>Quantidade em estoque: {stock}</p>
           <Link href={`/ContainerDetail/${id}`} passHref>
             <Button   title='Ver detalhes do produto'/>
           </Link>
