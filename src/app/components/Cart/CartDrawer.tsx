@@ -31,7 +31,7 @@ const CartDrawer = () => {
                 </button>
                 <div className="border-t boder-gray-600 my-4"></div>
                 {isCartEmpty ? (
-                    <p className="text-white text-center">Seu carrinho está vazio</p>
+                    <p className="text-white font-bold text-center">Seu carrinho está vazio</p>
                 ) : (
                     <>
                         {useStore.cart.map((item) => (
