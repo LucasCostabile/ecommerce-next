@@ -98,8 +98,8 @@ const Checkout = () => {
                             <div className="flex justify-around gap-40 items-center text-center">
                                 <h2 className=" text-orange-600 text-sm font-bold">{item.title}</h2>
                                 <h2 className="text-black text-sm font-bold">Quantidade: {item.quantity}</h2>
-                                <p className="text-orange-600 text-sm font-bold">Preço: {item.price}</p>
-                                <p className="text-orange-600 text-sm font-bold">stock: {item.stock}</p>
+                                <p className="text-orange-600 text-sm font-bold">Preço: R${item.price}</p>
+                                <p className="text-orange-600 text-sm font-bold">Disponível: {item.stock}</p>
                                 <div className="flex">
                                 <button
                                     className="text-white py-1 px-2 border bg-orange-600 rounded-md mt-2 text-sm mr-1"
